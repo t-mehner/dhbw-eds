@@ -1,0 +1,54 @@
+xst -intstyle ise -ifn "/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.xst" -ofn "/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.syr" 
+xst -intstyle ise -ifn "/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.xst" -ofn "/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.syr" 
+xst -intstyle ise -ifn "/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.xst" -ofn "/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.syr" 
+xst -intstyle ise -ifn "/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.xst" -ofn "/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Basys2_100_250General.ucf -p xc3s100e-cp132-4 cpu.ngc cpu.ngd  
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Basys2_100_250General.ucf -p xc3s100e-cp132-4 cpu.ngc cpu.ngd  
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Basys2_100_250General.ucf -p xc3s100e-cp132-4 cpu.ngc cpu.ngd  
+map -intstyle ise -p xc3s100e-cp132-4 -cm area -ir off -pr off -c 100 -o cpu_map.ncd cpu.ngd cpu.pcf 
+par -w -intstyle ise -ol high -t 1 cpu_map.ncd cpu.ncd cpu.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml cpu.twx cpu.ncd -o cpu.twr cpu.pcf -ucf Basys2_100_250General.ucf 
+bitgen -intstyle ise -f cpu.ut cpu.ncd 
+xst -intstyle ise -ifn "/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.xst" -ofn "/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Basys2_100_250General.ucf -p xc3s100e-cp132-4 cpu.ngc cpu.ngd  
+map -intstyle ise -p xc3s100e-cp132-4 -cm area -ir off -pr off -c 100 -o cpu_map.ncd cpu.ngd cpu.pcf 
+par -w -intstyle ise -ol high -t 1 cpu_map.ncd cpu.ncd cpu.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml cpu.twx cpu.ncd -o cpu.twr cpu.pcf -ucf Basys2_100_250General.ucf 
+bitgen -intstyle ise -f cpu.ut cpu.ncd 
+xst -intstyle ise -ifn "/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.xst" -ofn "/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.syr" 
+xst -intstyle ise -ifn "/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.xst" -ofn "/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Basys2_100_250General.ucf -p xc3s100e-cp132-4 cpu.ngc cpu.ngd  
+map -intstyle ise -p xc3s100e-cp132-4 -cm area -ir off -pr off -c 100 -o cpu_map.ncd cpu.ngd cpu.pcf 
+par -w -intstyle ise -ol high -t 1 cpu_map.ncd cpu.ncd cpu.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml cpu.twx cpu.ncd -o cpu.twr cpu.pcf -ucf Basys2_100_250General.ucf 
+bitgen -intstyle ise -f cpu.ut cpu.ncd 
+xst -intstyle ise -ifn "/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.xst" -ofn "/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Basys2_100_250General.ucf -p xc3s100e-cp132-4 cpu.ngc cpu.ngd  
+map -intstyle ise -p xc3s100e-cp132-4 -cm area -ir off -pr off -c 100 -o cpu_map.ncd cpu.ngd cpu.pcf 
+par -w -intstyle ise -ol high -t 1 cpu_map.ncd cpu.ncd cpu.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml cpu.twx cpu.ncd -o cpu.twr cpu.pcf -ucf Basys2_100_250General.ucf 
+bitgen -intstyle ise -f cpu.ut cpu.ncd 
+xst -intstyle ise -ifn "/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.xst" -ofn "/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Basys2_100_250General.ucf -p xc3s100e-cp132-4 cpu.ngc cpu.ngd  
+map -intstyle ise -p xc3s100e-cp132-4 -cm area -ir off -pr off -c 100 -o cpu_map.ncd cpu.ngd cpu.pcf 
+par -w -intstyle ise -ol high -t 1 cpu_map.ncd cpu.ncd cpu.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml cpu.twx cpu.ncd -o cpu.twr cpu.pcf -ucf Basys2_100_250General.ucf 
+bitgen -intstyle ise -f cpu.ut cpu.ncd 
+xst -intstyle ise -ifn "/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.xst" -ofn "/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Basys2_100_250General.ucf -p xc3s100e-cp132-4 cpu.ngc cpu.ngd  
+map -intstyle ise -p xc3s100e-cp132-4 -cm area -ir off -pr off -c 100 -o cpu_map.ncd cpu.ngd cpu.pcf 
+par -w -intstyle ise -ol high -t 1 cpu_map.ncd cpu.ncd cpu.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml cpu.twx cpu.ncd -o cpu.twr cpu.pcf -ucf Basys2_100_250General.ucf 
+bitgen -intstyle ise -f cpu.ut cpu.ncd 
+xst -intstyle ise -ifn "/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.xst" -ofn "/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Basys2_100_250General.ucf -p xc3s100e-cp132-4 cpu.ngc cpu.ngd  
+map -intstyle ise -p xc3s100e-cp132-4 -cm area -ir off -pr off -c 100 -o cpu_map.ncd cpu.ngd cpu.pcf 
+par -w -intstyle ise -ol high -t 1 cpu_map.ncd cpu.ncd cpu.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml cpu.twx cpu.ncd -o cpu.twr cpu.pcf -ucf Basys2_100_250General.ucf 
+bitgen -intstyle ise -f cpu.ut cpu.ncd 
+xst -intstyle ise -ifn "/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.xst" -ofn "/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Basys2_100_250General.ucf -p xc3s100e-cp132-4 cpu.ngc cpu.ngd  
+map -intstyle ise -p xc3s100e-cp132-4 -cm area -ir off -pr off -c 100 -o cpu_map.ncd cpu.ngd cpu.pcf 
+par -w -intstyle ise -ol high -t 1 cpu_map.ncd cpu.ncd cpu.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml cpu.twx cpu.ncd -o cpu.twr cpu.pcf -ucf Basys2_100_250General.ucf 
+bitgen -intstyle ise -f cpu.ut cpu.ncd 

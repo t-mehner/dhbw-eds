@@ -1,1 +1,1 @@
-# dhbw-eds
+# dhbw-entwurf-digitaler-systeme

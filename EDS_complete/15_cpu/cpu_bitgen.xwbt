@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.ncd
+OUTFILE=/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.bit
+FAMILY=Spartan3E
+PART=xc3s100e-4cp132
+WORKINGDIR=/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu
+LICENSE=WebPack
+USER_INFO=212052013_0_0_317

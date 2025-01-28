@@ -1,0 +1,66 @@
+# This file is a general .ucf for Basys2 board
+# To use it in a project:
+# - remove or comment the lines corresponding to unused pins
+# - rename the used signals according to the project
+# clock pin for Basys2 Board
+#NET "CLK" LOC = "B8"; # BANk = 0, Signal name = MCLK
+NET "CLK" LOC = "M6"; # BANk = 2, Signal name = UCLK
+
+## Pin assignment for DispCtl
+## Connected to Basys2 onBoard 7SEG display
+#NET "SEG<0>" LOC = "L14"; # BANk = 1, Signal name = CA
+#NET "SEG<1>" LOC = "H12"; # BANk = 1, Signal name = CB
+#NET "SEG<2>" LOC = "N14"; # BANk = 1, Signal name = CC
+#NET "SEG<3>" LOC = "N11"; # BANk = 2, Signal name = CD
+#NET "SEG<4>" LOC = "P12"; # BANk = 2, Signal name = CE
+#NET "SEG<5>" LOC = "L13"; # BANk = 1, Signal name = CF
+#NET "SEG<6>" LOC = "M12"; # BANk = 1, Signal name = CG
+#NET "DP" LOC = "N13"; # BANk = 1, Signal name = DP
+#
+##NET "AN<3>" LOC = "K14"; # BANk = 1, Signal name = AN3
+##NET "AN<2>" LOC = "M13"; # BANk = 1, Signal name = AN2
+##NET "AN<1>" LOC = "J12"; # BANk = 1, Signal name = AN1
+##NET "AN<0>" LOC = "F12"; # BANk = 1, Signal name = AN0
+#
+## Pin assignment for LEDs
+#NET "LED<7>" LOC = "G1" ; # BANk = 3, Signal name = LD7
+#NET "LED<6>" LOC = "P4" ; # BANk = 2, Signal name = LD6
+#NET "LED<5>" LOC = "N4" ;  # BANk = 2, Signal name = LD5
+#NET "LED<4>" LOC = "N5" ;  # BANk = 2, Signal name = LD4
+#NET "LED<3>" LOC = "P6" ; # BANk = 2, Signal name = LD3
+NET "LED<2>" LOC = "P7" ; # BANk = 3, Signal name = LD2
+NET "LED<1>" LOC = "M11" ; # BANk = 2, Signal name = LD1
+NET "LED<0>" LOC = "M5" ;  # BANk = 2, Signal name = LD0
+#
+# Pin assignment for SWs
+NET "RESET" LOC = "N3";  # BANk = 2, Signal name = SW7
+#NET "SW<6>" LOC = "E2";  # BANk = 3, Signal name = SW6
+#NET "SW<5>" LOC = "F3";  # BANk = 3, Signal name = SW5
+#NET "SW<4>" LOC = "G3";  # BANk = 3, Signal name = SW4
+#NET "SW<3>" LOC = "B4";  # BANk = 3, Signal name = SW3
+#NET "SW<2>" LOC = "K3";  # BANk = 3, Signal name = SW2
+#NET "SW<1>" LOC = "L3";  # BANk = 3, Signal name = SW1
+#NET "SW<0>" LOC = "P11";  # BANk = 2, Signal name = SW0
+#
+#NET "BTN<1>" LOC = "A7";  # BANk = 1, Signal name = BTN3
+#NET "BTN<2>" LOC = "M4";  # BANk = 0, Signal name = BTN2
+NET "BUTTON_2" LOC = "C11"; # BANk = 2, Signal name = BTN1
+NET "BUTTON_1" LOC = "G12"; # BANk = 0, Signal name = BTN0
+
+# Pin assignment for VGA
+
+NET "HSYNC"   LOC = "J14";  
+NET "VSYNC"   LOC = "K13"; 
+NET "RGB<0>"  LOC = "J13";  
+NET "RGB<1>"  LOC = "G14"; 
+NET "RGB<2>"  LOC = "F13";  
+#
+#NET "RED<2>"  LOC = "F13"; # BANk = 1, Signal name = RED2
+#NET "RED<1>"  LOC = "D13"; # BANk = 1, Signal name = RED1
+#NET "RED<0>"  LOC = "C14"; # BANk = 1, Signal name = RED0
+#NET "GREEN<2>"  LOC = "G14"; # BANk = 1, Signal name = GRN2
+#NET "GREEN<1>"  LOC = "G13"; # BANk = 1, Signal name = GRN1 
+#NET "GREEN<0>"  LOC = "F14"; # BANk = 1, Signal name = GRN0 
+#NET "BLUE<2>"  LOC = "J13" ; # BANk = 1, Signal name = BLU2
+#NET "BLUE<1>"  LOC = "H13" ; # BANk = 1, Signal name = BLU1 
+
