@@ -1,8 +1,0 @@
-AR counter behavioral /home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/counter.vhd sub00/vhpl01 1605693322
-EN rom NULL /home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/ipcore_dir/rom.vhd sub00/vhpl02 1605693323
-EN cpu NULL /home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.vhd sub00/vhpl06 1605693327
-AR rom rom_a /home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/ipcore_dir/rom.vhd sub00/vhpl03 1605693324
-AR cpu behavioral /home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/cpu.vhd sub00/vhpl07 1605693328
-EN counter NULL /home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/counter.vhd sub00/vhpl00 1605693321
-AR alu behavioral /home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/alu.vhd sub00/vhpl05 1605693326
-EN alu NULL /home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/alu.vhd sub00/vhpl04 1605693325

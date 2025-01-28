@@ -1,8 +1,0 @@
-Release 13.4 Drc O.87xd (lin64)
-Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
-
-Wed Nov 18 10:55:46 2020
-
-drc -z cpu.ncd cpu.pcf
-
-DRC detected 0 errors and 0 warnings.

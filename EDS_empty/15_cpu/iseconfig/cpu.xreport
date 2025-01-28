@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2021-01-18T08:03:22</DateModified>
+  <DateModified>2025-01-28T08:41:20</DateModified>
   <ModuleName>cpu</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
-  <SavedFilePath>/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/iseconfig/cpu.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>/home/torben/Documents/DHBW/EDS_19/Projekte_19/15_cpu/</ImplementationReportsDirectory>
+  <SavedFilePath>/home/torben/Documents/DHBW/dhbw-eds/EDS_empty/15_cpu/iseconfig/cpu.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>/home/torben/Documents/DHBW/dhbw-eds/EDS_empty/15_cpu/</ImplementationReportsDirectory>
   <DateInitialized>2020-11-17T13:36:44</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

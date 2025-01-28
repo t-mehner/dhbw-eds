@@ -1,4 +1,0 @@
-vhdl work "ipcore_dir/rom.vhd"
-vhdl work "counter.vhd"
-vhdl work "alu.vhd"
-vhdl work "cpu.vhd"
