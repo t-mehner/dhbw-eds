@@ -19,3 +19,4 @@ Dieses Repository enthält Materialien zur Vorlesung *Entwurf digitaler Systeme*
 
 Weitere Informationen zum Board: [Digilent Basys 3 Startseite](https://digilent.com/reference/programmable-logic/basys-3/start).
 
+Die Vorlesungsfolien können [hier](https://cernbox.cern.ch/s/x3Xsbb1UIBOIl7R) heruntergeladen werden. Das Passwort wird in der Vorlesung genannt.
