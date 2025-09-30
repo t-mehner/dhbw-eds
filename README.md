@@ -4,7 +4,6 @@ Dieses Repository enthält Materialien zur Vorlesung *Entwurf digitaler Systeme*
 
 - **EDS_complete** – Fertige Projekte
 - **EDS_empty** – Leere Projektvorlagen
-- **Entwurf digitaler Systeme.pdf** – Vorlesungsfolien
 - **formelsammlung.pdf** – Formelsammlung
 - **Prüfungen** – Bisherige Prüfungen
 
