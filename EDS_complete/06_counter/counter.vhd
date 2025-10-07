@@ -32,7 +32,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity counter is
 	Generic (
-		FREQ_IN : INTEGER := 50000000;
+		FREQ_IN : INTEGER := 100e6;
 		FREQ_OUT : INTEGER := 5 );
     Port ( 
 		CLK_IN : in  STD_LOGIC;
@@ -41,8 +41,8 @@ entity counter is
 end counter;
 
 architecture Behavioral of counter is
-	constant MAX : UNSIGNED(31 downto 0) := to_unsigned((FREQ_IN/FREQ_OUT/2)-1, 32);
-	signal sig_CNT : UNSIGNED(31 downto 0) := (others=>'0');
+	constant MAX : UNSIGNED(25 downto 0) := to_unsigned((FREQ_IN/FREQ_OUT/2)-1, 26);
+	signal sig_CNT : UNSIGNED(25 downto 0) := (others=>'0');
 	signal sig_CLK : STD_LOGIC := '0';
 begin
 
