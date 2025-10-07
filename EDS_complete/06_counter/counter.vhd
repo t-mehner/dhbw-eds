@@ -2,31 +2,32 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    11:02:14 10/07/2019 
+-- Create Date: 09/30/2025 10:23:46 AM
 -- Design Name: 
--- Module Name:    counter - Behavioral 
+-- Module Name: halfadder - Behavioral
 -- Project Name: 
 -- Target Devices: 
--- Tool versions: 
+-- Tool Versions: 
 -- Description: 
---
+-- 
 -- Dependencies: 
---
--- Revision: 
+-- 
+-- Revision:
 -- Revision 0.01 - File Created
--- Additional Comments: 
---
+-- Additional Comments:
+-- 
 ----------------------------------------------------------------------------------
+
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
 use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if instantiating
--- any Xilinx primitives in this code.
+-- any Xilinx leaf cells in this code.
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
