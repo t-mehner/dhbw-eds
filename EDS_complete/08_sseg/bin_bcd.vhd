@@ -30,7 +30,7 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity bin_bcd is
-    Port ( NUM   : in   UNSIGNED (9 downto 0);
+    Port ( NUM   : in   UNSIGNED (11 downto 0);
            BCD_0 : out  STD_LOGIC_VECTOR (3 downto 0);
            BCD_1 : out  STD_LOGIC_VECTOR (3 downto 0);
            BCD_2 : out  STD_LOGIC_VECTOR (3 downto 0);
@@ -39,16 +39,25 @@ end bin_bcd;
 
 architecture Behavioral of bin_bcd is
 
-	signal trunc_1000 : UNSIGNED( 9 downto 0 );
-	signal trunc_100 : UNSIGNED( 9 downto 0 );
-	signal trunc_10 : UNSIGNED( 9 downto 0 );
+	signal trunc_1000 : UNSIGNED( 11 downto 0 );
+	signal trunc_100 : UNSIGNED( 11 downto 0 );
+	signal trunc_10 : UNSIGNED( 11 downto 0 );
 
 begin
 
 	tausender : process( NUM )
 	begin
 	
-		if( NUM >= 1000 ) then
+	    if( NUM >= 4000 ) then
+			trunc_1000 <= NUM -4000;
+			BCD_3 <= "0100";
+		elsif( NUM >= 3000 ) then
+			trunc_1000 <= NUM -3000;
+			BCD_3 <= "0011";
+        elsif( NUM >= 2000 ) then
+			trunc_1000 <= NUM -2000;
+			BCD_3 <= "0010";
+		elsif( NUM >= 1000 ) then
 			trunc_1000 <= NUM -1000;
 			BCD_3 <= "0001";
 		else

@@ -31,7 +31,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity sseg is
     Port ( clk : in  STD_LOGIC;
-           num : in  UNSIGNED (9 downto 0);
+           num : in  UNSIGNED (11 downto 0);
 		   rst : in  STD_LOGIC;
            an  : out STD_LOGIC_VECTOR (3 downto 0);
            seg : out STD_LOGIC_VECTOR (6 downto 0));
@@ -50,7 +50,7 @@ begin
 
 	counter_0: entity work.counter
 	generic map(
-		freq_in => 50000000,
+		freq_in => 100e6,
 		freq_out => 1000
 	)
 	port map(
