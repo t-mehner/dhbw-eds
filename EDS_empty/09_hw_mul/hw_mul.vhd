@@ -33,35 +33,15 @@ entity hw_mul is
 	Generic(
 		N : integer := 4;
 		M : integer := 4 );
-    Port ( f1 : in  STD_LOGIC_VECTOR (N-1 downto 0);
-           f2 : in  STD_LOGIC_VECTOR (M-1 downto 0);
-           q : out  STD_LOGIC_VECTOR (M+N-1 downto 0));
+    Port ( A : in  STD_LOGIC_VECTOR (N-1 downto 0);
+           B : in  STD_LOGIC_VECTOR (M-1 downto 0);
+           Q : out  STD_LOGIC_VECTOR (M+N-1 downto 0));
 end hw_mul;
 
 architecture Behavioral of hw_mul is
 
 begin
 
-process( f1, f2 )
-	variable sum : unsigned( M+N-1 downto 0);
-	variable temp : unsigned( M+N-1 downto 0);
-begin
-	sum := to_unsigned(0, M+N);
-	
-	for I in 0 to N-1 loop
-	
-		temp := (others => '0');
-		if( f1(I) = '1') then
-			temp(I+M-1 downto I) := unsigned(f2);
-		end if;
-		
-		sum := sum + temp;
-		
-	end loop;
-	
-	q <= std_logic_vector(sum);
-
-end process;
 
 end Behavioral;
 

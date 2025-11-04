@@ -37,11 +37,11 @@ END hw_mul_tb;
  
 ARCHITECTURE behavior OF hw_mul_tb IS 
    --Inputs
-   signal f1 : std_logic_vector(4 downto 0) := (others => '0');
-   signal f2 : std_logic_vector(4 downto 0) := (others => '0');
+   signal A : std_logic_vector(4 downto 0) := (others => '0');
+   signal B : std_logic_vector(4 downto 0) := (others => '0');
 
  	--Outputs
-   signal q : std_logic_vector(9 downto 0);
+   signal Q : std_logic_vector(9 downto 0);
    -- No clocks detected in port list. Replace <clock> below with 
    -- appropriate port name 
  
@@ -53,9 +53,9 @@ BEGIN
 		N => 5,
 		M => 5 )
    PORT MAP (
-          f1 => f1,
-          f2 => f2,
-          q => q
+          A => A,
+          B => B,
+          Q => Q
         );
  
 
@@ -67,8 +67,8 @@ BEGIN
 
       for I in 0 to 31 loop
 		for J in 0 to 31 loop
-			f1 <= std_logic_vector(to_unsigned(I,5));
-			f2 <= std_logic_vector(to_unsigned(J,5));
+			A <= std_logic_vector(to_unsigned(I,5));
+			B <= std_logic_vector(to_unsigned(J,5));
 			
 			wait for 50 ns;
 		end loop;
@@ -77,14 +77,14 @@ BEGIN
       wait;
    end process;
 
-	check_proc: process(q)
+	check_proc: process(Q)
 		variable result : std_logic_vector(9 downto 0);
 	begin
 		
-		result := std_logic_vector(unsigned(f1)*unsigned(f2));
+		result := std_logic_vector(unsigned(A)*unsigned(B));
 	
 		assert q=result
-			report "unexpected value. i = " & integer'image(to_integer(unsigned(q)))
+			report "unexpected value. i = " & integer'image(to_integer(unsigned(Q)))
 			severity warning;
 	end process;
 
