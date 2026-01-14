@@ -1,4 +1,3 @@
--- Listing 12.1
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -30,29 +29,32 @@ architecture arch of VGA_SYNC is
    signal V_SYNC_REG, H_SYNC_REG: std_logic;
    signal V_SYNC_NEXT, H_SYNC_NEXT: std_logic;
    -- status signal
-   signal H_END, V_END, PIXEL_TICK: std_logic;
+   signal H_END, V_END, PIXEL_CLK: std_logic;
 begin
    -- registers
-   process (CLK,RESET)
+   process (PIXEL_CLK,RESET)
    begin
       if RESET='1' then
-         MOD2_REG <= '0';
          V_COUNT_REG <= (others=>'0');
          H_COUNT_REG <= (others=>'0');
          V_SYNC_REG <= '0';
          H_SYNC_REG <= '0';
-      elsif (CLK'event and CLK='1') then
-         MOD2_REG <= MOD2_NEXT;
+      elsif (rising_edge(PIXEL_CLK)) then
          V_COUNT_REG <= V_COUNT_NEXT;
          H_COUNT_REG <= H_COUNT_NEXT;
          V_SYNC_REG <= V_SYNC_NEXT;
          H_SYNC_REG <= H_SYNC_NEXT;
       end if;
    end process;
-   -- mod-2 circuit to generate 25 MHz enable tick
-   MOD2_NEXT <= not MOD2_REG;
-   -- 25 MHz pixel tick
-   PIXEL_TICK <= '1' when MOD2_REG='1' else '0';
+   
+    clk_inst : entity work.clk_wiz_0
+    port map (
+        clk_in1  => CLK,
+        reset    => RESET,
+        clk_out1 => PIXEL_CLK,
+        locked   => open
+    );
+   
    -- status
    H_END <=  -- end of horizontal counter
       '1' when H_COUNT_REG=(HD+HF+HB+HR-1) else --799
@@ -61,22 +63,18 @@ begin
       '1' when V_COUNT_REG=(VD+VF+VB+VR-1) else --524
       '0';
    -- mod-800 horizontal sync counter
-   process (H_COUNT_REG,H_END,PIXEL_TICK)
-   begin
-      if PIXEL_TICK='1' then  -- 25 MHz tick
-         if H_END='1' then
-            H_COUNT_NEXT <= (others=>'0');
-         else
-            H_COUNT_NEXT <= H_COUNT_REG + 1;
-         end if;
-      else
-         H_COUNT_NEXT <= H_COUNT_REG;
-      end if;
+   process (H_COUNT_REG,H_END)
+   begin      
+     if H_END='1' then
+        H_COUNT_NEXT <= (others=>'0');
+     else
+        H_COUNT_NEXT <= H_COUNT_REG + 1;
+     end if;
    end process;
    -- mod-525 vertical sync counter
-   process (V_COUNT_REG,H_END,V_END,PIXEL_TICK)
+   process (V_COUNT_REG,H_END,V_END)
    begin
-      if PIXEL_TICK='1' and H_END='1' then
+      if H_END='1' then
          if (V_END='1') then
             V_COUNT_NEXT <= (others=>'0');
          else
@@ -104,5 +102,5 @@ begin
    VSYNC <= V_SYNC_REG;
    PIX_X <= H_COUNT_REG;
    PIX_Y <= V_COUNT_REG;
-   P_TICK <= PIXEL_TICK;
+   P_TICK <= PIXEL_CLK;
 end arch;

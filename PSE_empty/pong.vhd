@@ -19,7 +19,7 @@ architecture arch of PONG1 is
 ----------------------------------------------
    constant WALL_X_L: integer:=32;
    constant WALL_X_R: integer:=35;
-	constant WALL_RGB:  std_logic_vector(2 downto 0):= "000000001111"; -- Wandfarbe: Blau
+	constant WALL_RGB:  std_logic_vector(11 downto 0):= "000000001111"; -- Wandfarbe: Blau
 	signal   WALL_ON:   std_logic;
 	
 ----------------------------------------------
