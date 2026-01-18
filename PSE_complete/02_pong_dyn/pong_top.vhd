@@ -4,16 +4,16 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity PONG_STAT is
+entity PONG is
    port (
       CLK,RESET: in std_logic;
       BTN_U, BTN_D: in std_logic;
       HSYNC, VSYNC: out  std_logic;
       R, G, B: out std_logic_vector(3 downto 0)
    );
-end PONG_STAT;
+end PONG;
 
-architecture arch of PONG_STAT is
+architecture arch of PONG is
    signal PIX_X, PIX_Y: UNSIGNED (9 downto 0);
    signal VIDEO_ON, PIXEL_CLK: std_logic;
    signal RGB_REG, RGB_NEXT: std_logic_vector(11 downto 0);

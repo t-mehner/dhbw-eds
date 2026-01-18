@@ -27,12 +27,15 @@ architecture arch of PONG1 is
 ----------------------------------------------
 -- Ball
 ----------------------------------------------
-   signal   BALL_X_L: unsigned(9 downto 0) := to_unsigned(300, 10);
-   signal   BALL_X_R: unsigned(9 downto 0) := to_unsigned(308, 10);
-   signal   BALL_Y_O: unsigned(9 downto 0) := to_unsigned(200, 10);
-   signal   BALL_Y_U: unsigned(9 downto 0) := to_unsigned(208, 10);
+   signal   BALL_X_L_NEXT, BALL_X_L_REG : unsigned(9 downto 0) := to_unsigned(300, 10);
+   signal   BALL_X_R_NEXT, BALL_X_R_REG : unsigned(9 downto 0) := to_unsigned(308, 10);
+   signal   BALL_Y_O_NEXT, BALL_Y_O_REG : unsigned(9 downto 0) := to_unsigned(200, 10);
+   signal   BALL_Y_U_NEXT, BALL_Y_U_REG : unsigned(9 downto 0) := to_unsigned(208, 10);
    signal   BALL_RGB:  std_logic_vector(11 downto 0):= "111100000000"; -- Ballfarbe: Rot
    signal   BALL_ON:   std_logic;
+   signal   BALL_UP_NEXT, BALL_UP_REG : std_logic := '1';
+   signal   BALL_LEFT_NEXT, BALL_LEFT_REG : std_logic := '1';
+   constant BALL_SPEED : integer := 2;
 
 ----------------------------------------------
 -- Bar
@@ -55,11 +58,25 @@ architecture arch of PONG1 is
 movement: process(RST, CLK) 
 begin
     if RST = '1' then
-        BAR_Y_O_REG <= to_unsigned(200, 10);
-        BAR_Y_U_REG <= to_unsigned(264, 10);
+        BAR_Y_O_REG   <= to_unsigned(200, 10);
+        BAR_Y_U_REG   <= to_unsigned(264, 10);
+        
+        BALL_Y_O_REG  <= to_unsigned(200,10);
+        BALL_Y_U_REG  <= to_unsigned(208,10);
+        BALL_X_L_REG  <= to_unsigned(300,10);
+        BALL_X_R_REG  <= to_unsigned(308,10);
+        BALL_UP_REG   <= '1';
+        BALL_LEFT_REG <= '1';
     elsif rising_edge(CLK) then
-        BAR_Y_O_REG <= BAR_Y_O_NEXT;
-        BAR_Y_U_REG <= BAR_Y_U_NEXT; 
+        BAR_Y_O_REG   <= BAR_Y_O_NEXT;
+        BAR_Y_U_REG   <= BAR_Y_U_NEXT; 
+        
+        BALL_Y_O_REG  <= BALL_Y_O_NEXT;
+        BALL_Y_U_REG  <= BALL_Y_U_NEXT;
+        BALL_X_L_REG  <= BALL_X_L_NEXT;
+        BALL_X_R_REG  <= BALL_X_R_NEXT;
+        BALL_UP_REG   <= BALL_UP_NEXT;
+        BALL_LEFT_REG <= BALL_LEFT_NEXT;
     end if; 
 end process movement;
 
@@ -76,6 +93,56 @@ begin
         BAR_Y_U_NEXT <= BAR_Y_O_REG + 64;
     end if;
 end process bar;
+
+ball: process(BALL_Y_O_REG, BALL_X_L_REG, BALL_LEFT_REG, BALL_UP_REG)
+begin
+    if BALL_LEFT_REG = '1' then
+        if BALL_X_L_REG > WALL_X_R + BALL_SPEED then
+            BALL_X_L_NEXT <= BALL_X_L_REG - BALL_SPEED;
+            BALL_X_R_NEXT <= BALL_X_L_REG - BALL_SPEED + 8;
+            BALL_LEFT_NEXT <= '1';
+        else
+            BALL_X_L_NEXT <= to_unsigned(WALL_X_R + 1,10);
+            BALL_X_R_NEXT <= to_unsigned(WALL_X_R + 9,10);
+            BALL_LEFT_NEXT <= '0';
+        end if;
+    else
+        if BALL_X_R_REG >= BAR_X_L and
+           BALL_X_L_REG < BAR_X_R and
+           BALL_Y_O_REG < BAR_Y_U_REG and 
+           BALL_Y_U_REG > BAR_Y_O_REG then
+            BALL_X_L_NEXT <= BALL_X_L_REG;
+            BALL_X_R_NEXT <= BALL_X_L_REG+8;
+            BALL_LEFT_NEXT <= '1';
+        else
+            BALL_X_L_NEXT <= BALL_X_L_REG + BALL_SPEED;
+            BALL_X_R_NEXT <= BALL_X_L_REG + BALL_SPEED + 8;
+            BALL_LEFT_NEXT <= '0';  
+        end if;             
+    end if;
+    
+    if BALL_UP_REG = '1' then
+        if BALL_Y_O_REG > BALL_SPEED then
+            BALL_Y_O_NEXT <= BALL_Y_O_REG - BALL_SPEED;
+            BALL_Y_U_NEXT <= BALL_Y_O_REG - BALL_SPEED + 8;
+            BALL_UP_NEXT <= '1';
+        else
+            BALL_Y_O_NEXT <= BALL_Y_O_REG;
+            BALL_Y_U_NEXT <= BALL_Y_O_REG+8;
+            BALL_UP_NEXT <= '0';
+        end if;
+    else
+        if BALL_Y_U_REG <= 480 - BALL_SPEED then
+            BALL_Y_O_NEXT <= BALL_Y_O_REG + BALL_SPEED;
+            BALL_Y_U_NEXT <= BALL_Y_O_REG + BALL_SPEED + 8;
+            BALL_UP_NEXT <= '0';
+        else
+            BALL_Y_O_NEXT <= BALL_Y_O_REG;
+            BALL_Y_U_NEXT <= BALL_Y_O_REG + 8;
+            BALL_UP_NEXT <= '1';
+        end if;             
+    end if;
+end process ball;
 ----------------------------------------------
 -- Wand
 ----------------------------------------------
@@ -96,8 +163,8 @@ end process bar;
 -- Ball
 ----------------------------------------------
     BALL_ON <=
-        '1' when (PIX_X >= BALL_X_L) and (PIX_X < BALL_X_R) and
-                 (PIX_Y >= BALL_Y_O) and (PIX_Y < BALL_Y_U) else
+        '1' when (PIX_X >= BALL_X_L_REG) and (PIX_X < BALL_X_R_REG) and
+                 (PIX_Y >= BALL_Y_O_REG) and (PIX_Y < BALL_Y_U_REG) else
         '0';             
 ----------------------------------------------
 -- Anzeigeprozess
