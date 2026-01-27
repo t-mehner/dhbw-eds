@@ -54,7 +54,7 @@ Hinweis zur Flanke: In vielen VGA-Sync-Implementierungen ist VSYNC aktiv-low. F�
 
 In eurer XDC-Datei ergänzt ihr Ports für BTN_U und BTN_D und mappt sie auf die Basys-3 Pins.
 
-Beispiel (Basys-3-typisch):
+Beispiel (für Basys-3):
 
 * BTN_U auf T18
 * BTN_D auf U17
@@ -204,16 +204,16 @@ Die Farbausgabe (Multiplexing Wand/Schläger/Ball/Hintergrund) bleibt konzeption
 ## Typische Fehlerbilder und Debug-Hinweise
 
 1. Ball bewegt sich viel zu schnell
-   Ursache: Ihr taktet mit 100 MHz statt mit Frame-Rate. Lösung: VSYNC-Enable oder Divider.
+   Ursache: Ihr taktet mit 100 MHz statt mit Frame-Rate. Lösung: VSYNC als Clock oder Divider.
 
 2. Schläger verlässt den Bildschirm
-   Ursache: Grenzen falsch (480 vs 479) oder falsches Signal verglichen. Lösung: konsequent Oberkante begrenzen, Unterkante als Oberkante+Höhe.
+   Ursache: Grenzen falsch oder falsches Signal verglichen. Lösung: konsequent Oberkante begrenzen, Unterkante als Oberkante+Höhe. Geschwindigkeit beachten (Bei 10 Bit: 1-2 = 1022)
 
 3. Ball „klebt“ am Schläger oder flackert
-   Ursache: Nach Kollision bleibt der Ball in überlappender Position und triggert sofort wieder. Lösung: bei Treffer Ball minimal zurücksetzen oder X so setzen, dass er knapp links vom Schläger liegt.
+   Ursache: Nach Kollision bleibt der Ball in überlappender Position und triggert sofort wieder. Lösung: Richtungssignale nicht invertieren, sondern fest auf '1' oder '0' setzen. 
 
 4. Kollisionen wirken „unlogisch“
-   Ursache: Bounding-Box-Test falsch (>, >= vertauscht) oder ihr nutzt NEXT statt REG. Lösung: Kollisionen immer mit REG berechnen, NEXT daraus ableiten.
+   Ursache: Bounding-Box-Test falsch (>, >= vertauscht) oder ihr nutzt NEXT statt REG. Lösung: Kollisionen (und sonst alles) immer mit REG berechnen.
 
 ## Abgabe
 
