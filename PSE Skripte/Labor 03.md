@@ -173,7 +173,7 @@ Wenn euer `sseg`-Modul aus dem letzten Semester stammt, prüft:
 1. Erwartet `sseg` `UNSIGNED` oder `STD_LOGIC_VECTOR`?
 2. Im Projekt des letzten Semesters wird `sseg` direkt mit Binärwert `num` gefüttert und die BCD-Wandlung intern gemacht (über `bin_bcd`).
 
-## Teil F: Erwartetes Verhalten als Testplan
+## Teil F: Erwartetes Verhalten
 
 ### F1: Titelbildschirm
 
